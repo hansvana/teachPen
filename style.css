@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Code+Pro:400,700);
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 200%;
+    margin: 1em;
+}
+
+h1 {
+    text-transform: uppercase;
+    background-color: yellow;
+}
+
+.CodeMirror {
+    height: auto;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: 'Source Code Pro', monospace;
+}
