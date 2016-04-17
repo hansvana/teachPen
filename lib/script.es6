@@ -81,11 +81,14 @@ class TeachPen {
                     [/\</g,"&lt;"],
                     [/\>/g,"&gt;"],
                     [/# (.*)/,"<h1>$1</h1>"],
+                    [/\!\!\[(.*?)\]\((.*?)\)/g,"<div class='coverImage' style='background-image: url($2)'></div>"],
+                    [/\!\[(.*?)\]\((.*?)\)/g,"<div class='imgContainer'><img src='$2' alt='$1'></div>"],
                     [/\[(.*?)\]\((.*?)\)/g,"<a href='$2' target='_blank'>$1</a>"],
                     [/\`\`\`(.+)/,"<div class='code $1'>"],
                     [/\`\`\`/,"</div>"],
                     [/\*\*(.*?)\*\*/g,"<strong>$1</strong>"],
-                    [/\*(.*?)\*/g,"<em>$1</em>"]
+                    [/\*(.*?)\*/g,"<em>$1</em>"],
+                    [/\~\~(.*?)\~\~/g,"<span class='faded'>$1</span>"],
 
                 ].forEach((regex) => {
                     p = p.trim().replace(regex[0],regex[1]);

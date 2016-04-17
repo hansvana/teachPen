@@ -97,7 +97,7 @@ var TeachPen = function () {
                 var paragraphs = _this4._markdown[_this4._currentSlide].split(/\n\s+/);
 
                 var result = paragraphs.map(function (p) {
-                    [[/\</g, "&lt;"], [/\>/g, "&gt;"], [/# (.*)/, "<h1>$1</h1>"], [/\[(.*?)\]\((.*?)\)/g, "<a href='$2' target='_blank'>$1</a>"], [/\`\`\`(.+)/, "<div class='code $1'>"], [/\`\`\`/, "</div>"], [/\*\*(.*?)\*\*/g, "<strong>$1</strong>"], [/\*(.*?)\*/g, "<em>$1</em>"]].forEach(function (regex) {
+                    [[/\</g, "&lt;"], [/\>/g, "&gt;"], [/# (.*)/, "<h1>$1</h1>"], [/\!\!\[(.*?)\]\((.*?)\)/g, "<div class='coverImage' style='background-image: url($2)'></div>"], [/\!\[(.*?)\]\((.*?)\)/g, "<div class='imgContainer'><img src='$2' alt='$1'></div>"], [/\[(.*?)\]\((.*?)\)/g, "<a href='$2' target='_blank'>$1</a>"], [/\`\`\`(.+)/, "<div class='code $1'>"], [/\`\`\`/, "</div>"], [/\*\*(.*?)\*\*/g, "<strong>$1</strong>"], [/\*(.*?)\*/g, "<em>$1</em>"], [/\~\~(.*?)\~\~/g, "<span class='faded'>$1</span>"]].forEach(function (regex) {
                         p = p.trim().replace(regex[0], regex[1]);
                     });
 
