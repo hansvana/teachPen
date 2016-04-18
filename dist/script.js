@@ -11,18 +11,27 @@ var TeachPen = function () {
 
         this._filename = filename;
         this._markdown = "";
-        this._currentSlide = 1;
+        this._currentSlide = this.initPage();
+
         this.initEvents();
         this.getSlide();
     }
 
     _createClass(TeachPen, [{
+        key: "initPage",
+        value: function initPage() {
+            var url = location.href;
+            var regQ = /[\?\&]page\=(\w*)\&?/;
+            var regex = new RegExp(regQ);
+            var results = regex.exec(url);
+            return results == null ? 1 : results[1];
+        }
+    }, {
         key: "initEvents",
         value: function initEvents() {
             var _this = this;
 
             document.addEventListener('keyup', function (evt) {
-                console.log(evt.keyCode);
                 switch (evt.keyCode) {
                     case 40:
                         _this._currentSlide++;
@@ -60,6 +69,9 @@ var TeachPen = function () {
                             scrollbarStyle: "null"
                         });
                     });
+
+                    var url = [location.protocol, '//', location.host, location.pathname].join('');
+                    history.pushState(null, null, url + "?page=" + _this2._currentSlide);
                 });
             }).catch(function (reason) {
                 console.error(reason);
@@ -97,7 +109,7 @@ var TeachPen = function () {
                 var paragraphs = _this4._markdown[_this4._currentSlide].split(/\n\s+/);
 
                 var result = paragraphs.map(function (p) {
-                    [[/\</g, "&lt;"], [/\>/g, "&gt;"], [/# (.*)/, "<h1>$1</h1>"], [/\!\!\[(.*?)\]\((.*?)\)/g, "<div class='coverImage' style='background-image: url($2)'></div>"], [/\!\[(.*?)\]\((.*?)\)/g, "<div class='imgContainer'><img src='$2' alt='$1'></div>"], [/\[(.*?)\]\((.*?)\)/g, "<a href='$2' target='_blank'>$1</a>"], [/\`\`\`(.+)/, "<div class='code $1'>"], [/\`\`\`/, "</div>"], [/\*\*(.*?)\*\*/g, "<strong>$1</strong>"], [/\*(.*?)\*/g, "<em>$1</em>"], [/\~\~(.*?)\~\~/g, "<span class='faded'>$1</span>"]].forEach(function (regex) {
+                    [[/\</g, "&lt;"], [/\>/g, "&gt;"], [/##red (.*)/, "<h2 style='background-color: #f00'>$1</h2>"], [/## (.*)/, "<h2>$1</h2>"], [/# (.*)/, "<h1>$1</h1>"], [/\$\[fakebody\]\((.*?)\)/g, "<div id='fakebody'>$1</div>"], [/\$\[hiddenrun\]/g, "<div id='hiddenrun'></div>"], [/\!\!\[(.*?)\]\((.*?)\)/g, "<div class='coverImage' style='background-image: url($2)'></div>"], [/\!\[(.*?)\]\((.*?)\)/g, "<div class='imgContainer'><img src='$2' style='height:$1px'></div>"], [/\[(.*?)\]\((.*?)\)/g, "<a href='$2' target='_blank'>$1</a>"], [/\`\`\`(.+)/, "<div class='code $1'>"], [/\`\`\`/, "</div>"], [/\*\*(.*?)\*\*/g, "<strong>$1</strong>"], [/\*(.*?)\*/g, "<em>$1</em>"], [/\~\~(.*?)\~\~/g, "<span class='faded'>$1</span>"]].forEach(function (regex) {
                         p = p.trim().replace(regex[0], regex[1]);
                     });
 

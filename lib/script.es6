@@ -2,14 +2,22 @@ class TeachPen {
     constructor(filename) {
         this._filename = filename;
         this._markdown = "";
-        this._currentSlide = 1;
+        this._currentSlide = this.initPage();
+
         this.initEvents();
         this.getSlide();
     }
 
+    initPage() {
+        let url = location.href;
+        let regQ = /[\?\&]page\=(\w*)\&?/;
+        let regex = new RegExp(regQ);
+        let results = regex.exec(url);
+        return results == null ? 1 : results[1];
+    }
+
     initEvents() {
         document.addEventListener('keyup', (evt) => {
-           console.log(evt.keyCode);
             switch (evt.keyCode) {
                 case 40:
                     this._currentSlide++;
@@ -46,6 +54,10 @@ class TeachPen {
                                         scrollbarStyle: "null"
                                     });                                    
                                 });
+
+                                var url = [location.protocol, '//', location.host, location.pathname].join('');
+                                history.pushState(null,null,url+"?page="+this._currentSlide);
+
                             });
                     })
                     .catch(reason => {console.error(reason)})
@@ -80,9 +92,13 @@ class TeachPen {
                 [
                     [/\</g,"&lt;"],
                     [/\>/g,"&gt;"],
+                    [/##red (.*)/,"<h2 style='background-color: #f00'>$1</h2>"],
+                    [/## (.*)/,"<h2>$1</h2>"],
                     [/# (.*)/,"<h1>$1</h1>"],
+                    [/\$\[fakebody\]\((.*?)\)/g, "<div id='fakebody'>$1</div>"],
+                    [/\$\[hiddenrun\]/g, "<div id='hiddenrun'></div>"],
                     [/\!\!\[(.*?)\]\((.*?)\)/g,"<div class='coverImage' style='background-image: url($2)'></div>"],
-                    [/\!\[(.*?)\]\((.*?)\)/g,"<div class='imgContainer'><img src='$2' alt='$1'></div>"],
+                    [/\!\[(.*?)\]\((.*?)\)/g,"<div class='imgContainer'><img src='$2' style='height:$1px'></div>"],
                     [/\[(.*?)\]\((.*?)\)/g,"<a href='$2' target='_blank'>$1</a>"],
                     [/\`\`\`(.+)/,"<div class='code $1'>"],
                     [/\`\`\`/,"</div>"],

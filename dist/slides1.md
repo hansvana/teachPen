@@ -6,7 +6,7 @@
 ***
 # Waarom krijg je dit vak?
 
-![Drie-eenheid HTML, CSS en JS](media/Afbeelding1.png)
+![300](media/Afbeelding1.png)
 
 ***
 # Weekindeling 
@@ -35,7 +35,7 @@ Documenten op Blackboard
 ***
 # WAAROM JAVASCRIPT?
 
-![But Why?](https://media.giphy.com/media/ffJiLLtCk5Am4/giphy.gif)
+![250](https://media.giphy.com/media/ffJiLLtCk5Am4/giphy.gif)
 
 ***
 # Voorbeelden van JS
@@ -68,13 +68,48 @@ met deze code:
 document.body.innerHTML = "Hello!";
 ```
 ***
-$[fakebody](Hello!)
+Hello!
 
 ```javascript
 document.body.innerHTML = "Hello!";
 ```
+***
+## Hello!
 
-$[hiddenrun]
+```javascript
+document.body.innerHTML = "<h1>Hello!</h1>";
+```
+***
+## Hello!
+
+HTML:
+```html
+<body>
+&nbsp;&nbsp;<script src="script.js"></script>
+</body>
+```
+
+JS:
+```javascript
+document.body.innerHTML = "<h1>Hello!</h1>";
+```
+***
+##red Hello!
+
+HTML:
+```html
+<body>
+&nbsp;&nbsp;<div id="mijnDiv"></div>
+&nbsp;&nbsp;<script src="script.js"></script>
+</body>
+```
+
+JS:
+```javascript
+document.getElementById("mijnDiv").innerHTML = "<h1>Hello!</h1>";
+ &nbsp;
+document.getElementById("mijnDiv").style.backgroundColor = "red"; 
+```
 ***
 # Console
 
@@ -107,19 +142,19 @@ Elke keer dat je even tijdelijk iets wil bewaren in je script, maak je een varia
 Een variabele aanmaken:
 
 ```javascript
-var schaap;
+
 ```
 
 Een waarde in die variabele stoppen:
 
 ```javascript
-schaap = 3;
+
 ```
 
 De variabele gebruiken om iets te doen:
 
 ```javascript
-console.log(schaap);
+
 ```
 ***
 # Opdracht 1
@@ -131,15 +166,23 @@ console.log(schaap);
 ⇨ Maak variabele 1 gelijk aan variabele 1 plus variabele 2
 
 ⇨ Toon variabele 1 in de console
-***
-Rekenen met variabelen:
 
 ```javascript
 
 
 ```
 ***
-Prompt:
+Rekenen met variabelen:
+
+```javascript
+var appels = 3;
+
+var peren = 5;
+
+appels = appels + peren;
+```
+***
+# Prompt
 
 ```javascript
 var naam = prompt('Hoe heet je?');
@@ -164,35 +207,36 @@ console.log(naam);
 ***
 ```javascript
 if (dit waar is) {
-    doe dan dat
+ &nbsp;&nbsp;doe dan dat
 }
 ```
 ***
 ```javascript
 if (dit waar is) {
-    doe dan dat
+ &nbsp;&nbsp;doe dan dat
 } else {
-    doe dan dat
+&nbsp;&nbsp;doe dan dat
 }
 ```
 ***
 ```javascript
 var getal = 3;
-
+ &nbsp;
 if (getal > 4) {
-    console.log('A');
+&nbsp;&nbsp;console.log('A');
 } else {
-    console.log('B');
+&nbsp;&nbsp;console.log('B');
 }
 ```
 ***
 # if
 ```javascript
-if (a > b)   // groter dan\n
-if (a < b)   // kleiner dan\n
-if (a == b)  // gelijk aan (twee = tekens!)\n
-if (a != b)  // niet gelijk aan\n
-if (a >= b)  // groter dan of gelijk aan\n
+if (a > b)   // groter dan
+
+if (a < b)   // kleiner dan
+if (a == b)  // gelijk aan (twee = tekens!)
+if (a != b)  // niet gelijk aan
+if (a >= b)  // groter dan of gelijk aan
 if (a <= b)  // kleiner dan of gelijk aan
 ```
 ***
@@ -204,3 +248,54 @@ if (a <= b)  // kleiner dan of gelijk aan
 
 ⇨ Zoniet, toon dan "Fout!"
 ***
+##red Hello!
+
+HTML:
+```html
+<body>
+&nbsp;&nbsp;<div id="mijnDiv"></div>
+&nbsp;&nbsp;<script src="script.js"></script>
+</body>
+```
+
+JS:
+```javascript
+document.getElementById("mijnDiv").innerHTML = "<h1>Hello!</h1>";
+ &nbsp;
+document.getElementById("mijnDiv").style.backgroundColor = "red"; 
+```
+***
+![100](media/smile.jpg)
+
+HTML:
+```html
+<img id="plaatje">
+```
+
+JS:
+```javascript
+var titel = document.getElementById("plaatje");
+ &nbsp;
+titel.src = "smile.jpg";
+```
+***
+# Opdracht 4: Huiswerk
+
+⇨ Maak een kopie van de bestanden van opdracht 3
+
+⇨ Maak een img-tag met een id in de body van je HTML
+
+⇨ Als de variabele gelijk is aan "Repelsteeltje", toon dan een plaatje
+
+⇨ Zoniet, toon dan een ander plaatje
+
+⇨ Google hoe je met JS de backgroundColor van de **body** verandert
+
+⇨ Maak bij een juist antwoord de pagina groen, anders rood
+***
+# Huiswerk
+
+⇨ Opdracht 4
+
+⇨ Artikel 'Style Guide' op BB
+

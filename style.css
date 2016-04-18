@@ -18,6 +18,10 @@ h1 {
     background-color: yellow;
 }
 
+h2 {
+    margin-top: 0;
+}
+
 .CodeMirror {
     height: auto;
     padding: 0.5em;
@@ -42,9 +46,15 @@ div.coverImage {
 }
 
 img {
-    height: 400px;
+   height: 250px;
 }
 
 span.faded {
     opacity: 0.4;
+}
+
+#fakebody {
+    font-family: "Times New Roman", serif;
+    font-size: 16pt;
+    margin-bottom: 1em;
 }
